@@ -43,7 +43,7 @@ namespace TAFESA_EnrolmentSystem
         }
 
         // new all-args constructor
-        public Student(string studentID, string program, string dateRegistered, Enrollment enrollment)
+        public Student(string studentID, string program, string dateRegistered, Enrollment enrollment) : base(DEF_NAME, DEF_EMAIL, DEF_PHONENUMBER)
         {
             StudentID = studentID;
             Program = program;
@@ -57,8 +57,61 @@ namespace TAFESA_EnrolmentSystem
         /// <returns>The studentID, program, and date registered</returns>
         public override string ToString()
         {
-            return "studentID: " + StudentID + ", program: " + Program + ", date registered: " + DateRegistered
-                + ",\nEnrollment " + StudentEnrollment;
+            return "Person-> " + base.ToString() + "\nstudentID: " + StudentID + ", program: " + Program + ", date registered: " + DateRegistered
+                + ",\nEnrollment-> " + StudentEnrollment;
+        }
+
+        /// <summary>
+        /// Overriding the Equals method
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns>True if objects are equal otherwise not equal.</returns>
+        public override bool Equals(object obj)
+        {
+            // check null object to avoid NullReferenceException
+            if(obj == null)
+                return false;
+            // chec reference equality
+            if(ReferenceEquals(this, obj))
+                return true;
+            // check different object types
+            if(obj.GetType() != GetType())
+                return false;
+
+            Student student = (Student)obj;
+            return student.StudentID == this.StudentID; 
+
+        }
+
+        /// <summary>
+        /// Override the GetHashCode method
+        /// </summary>
+        /// <returns>The hashed student id.</returns>
+        public override int GetHashCode()
+        {
+            return this.StudentID.GetHashCode();
+        }
+
+        /// <summary>
+        /// Overloading the "==" operator
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns>True if Student x equals Student y.</returns>
+        public static bool operator == (Student student1, Student student2)
+        {
+            return object.Equals(student1, student2);
+        }
+
+        /// <summary>
+        /// Overloading the "!=" operator
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns>False if Student x not equal Student y</returns>
+        public static bool operator != (Student student1, Student student2)
+        {
+            return !object.Equals(student1, student2);
         }
 
     }

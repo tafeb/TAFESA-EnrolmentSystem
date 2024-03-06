@@ -110,6 +110,30 @@ namespace TAFESA_EnrolmentSystem
             Console.WriteLine(subject2);
             Console.WriteLine("------- End Testing Subject Class -------");
 
+            Console.WriteLine("\n** Testing of overloading '==', '!=' operators and overriding Equal method of Student Class **");
+            Student studentA = new Student("A10021", "Advance C#", "01/01/2021");
+            Student studentB = new Student("A10021", "Advance C#", "01/01/2021");
+            Student studentC = new Student("A10300", "Advance C#", "01/01/2021");
+            Console.WriteLine(studentA + "\n");
+            Console.WriteLine(studentB + "\n");
+            Console.WriteLine(studentC + "\n");
+
+            Console.WriteLine("Testing the '==' operator");
+            Console.WriteLine("studentA == studentB is " + (studentA == studentB));
+            Console.WriteLine("studentA == studentB is " + (studentA == studentC));
+
+            Console.WriteLine("\nTesting the '!=' operator");
+            Console.WriteLine("studentA != studentB is " + (studentA != studentB));
+            Console.WriteLine("studentA != studentB is " + (studentA != studentC));
+
+            Console.WriteLine("\nTesting the Equals operator");
+            Console.WriteLine("studentA.Equals(studentB) is " + (studentA.Equals(studentB)));
+            Console.WriteLine("studentA.Equals(studentC) is " + (studentA.Equals(studentC)));
+            Console.WriteLine("studentA.Equals(null) is " + (studentA.Equals(null)));
+
+            Console.WriteLine("\nHashCode for studentA studentID is " + studentA.GetHashCode());
+
+
             Console.ReadKey();
 
         }

@@ -57,7 +57,7 @@ namespace TAFESA_EnrolmentSystem
         public override string ToString()
         {
             return "date enrolled: " + DateEnrolled + ", grade: " + Grade + ", semester: " + Semester
-                    + ",\nSubject: " + StudentSubject;
+                    + ",\nSubject-> " + StudentSubject;
         }
 
     }

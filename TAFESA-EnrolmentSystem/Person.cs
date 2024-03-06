@@ -9,9 +9,9 @@ namespace TAFESA_EnrolmentSystem
     public class Person
     {
         // constants
-        const string DEF_NAME = "No name provided";
-        const string DEF_EMAIL = "No email provided";
-        const string DEF_PHONENUMBER = "No phone number provided";
+        public const string DEF_NAME = "No name provided";
+        public const string DEF_EMAIL = "No email provided";
+        public const string DEF_PHONENUMBER = "No phone number provided";
 
         // variables 
         private string name;
@@ -57,7 +57,7 @@ namespace TAFESA_EnrolmentSystem
         public override string ToString()
         {
             return "name: " + Name + ", email: " + Email + ", phone Number: " + PhoneNumber
-                + ",\nAddress: " + StudentAddress;
+                + ",\nAddress-> " + StudentAddress;
         }
 
 
