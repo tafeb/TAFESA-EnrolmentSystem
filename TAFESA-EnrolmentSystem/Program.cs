@@ -25,6 +25,11 @@ namespace TAFESA_EnrolmentSystem
             // create a new person using all-args constructor
             Person person2 = new Person("Charlotte Bronte", "charB@email.com", "0422334455");
             Console.WriteLine(person2);
+            Console.WriteLine();
+            // create a new person using new all-args contructor
+            Address addressTest = new Address("addressTest", "addressTest", "addressTest", "addressTest", "addressTest");
+            Person personTest = new Person("personTest", "personTest", "personTest", addressTest);
+            Console.WriteLine(personTest);
             Console.WriteLine("------- End Testing Person Class -------");
 
 
@@ -61,6 +66,11 @@ namespace TAFESA_EnrolmentSystem
             // create a new student using all-args constructor
             Student student2 = new Student("A00115678", "Diploma of Cyber Security", "06/03/2023");
             Console.WriteLine(student2);
+            Console.WriteLine();
+            // create a new student using new all-args contructor
+            Enrollment enrollmentTest1 = new Enrollment("enrollmentTest", "enrollmentTest", "enrollmentTest");
+            Student studentTest = new Student("studentTest", "StudentTest", "studentTest", enrollmentTest1);
+            Console.WriteLine(studentTest);
             Console.WriteLine("------- End Testing Student Class -------");
 
             Console.WriteLine("\n------- Testing Enrollment Class -------");
@@ -77,6 +87,11 @@ namespace TAFESA_EnrolmentSystem
             // create a new enrollment using all-args constructor
             Enrollment enrollment2 = new Enrollment("01/06/2023", "PA", "Semester 2");
             Console.WriteLine(enrollment2);
+            Console.WriteLine();
+            // create a new enrollment using new all-args contructor
+            Subject sujectTest = new Subject("subjectTest", "subjectTest", 100000.00);
+            Enrollment enrollmentTest2 = new Enrollment("enrollmentTest", "enrollmentTest", "enrollmentTest", sujectTest);
+            Console.WriteLine(enrollmentTest2);
             Console.WriteLine("------- End Testing Enrollment Class -------");
 
             Console.WriteLine("\n------- Testing Subject Class -------");

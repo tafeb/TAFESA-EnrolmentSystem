@@ -17,11 +17,15 @@ namespace TAFESA_EnrolmentSystem
         private string name;
         private string email;
         private string phoneNumber;
+        // for address class
+        private Address addess;
 
         // Property Assessor methods
         public string Name { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
+        // for addess class
+        public Address StudentAddress { get; set; }
 
         // no-args constructor
         public Person() : this(DEF_NAME, DEF_EMAIL, DEF_PHONENUMBER)
@@ -30,20 +34,30 @@ namespace TAFESA_EnrolmentSystem
         }
 
         // all-args constructor
-        public Person(string name, string email, string phoneNumber)
+        public Person(string name, string email, string phoneNumber) : this(name, email, phoneNumber, new Address())
         { 
+            //Name = name;
+            //Email = email;
+            //PhoneNumber = phoneNumber;
+        }
+
+        // new all-args constructor
+        public Person(string name, string email, string phoneNumber, Address address)
+        {
             Name = name;
             Email = email;
             PhoneNumber = phoneNumber;
+            StudentAddress = address;
         }
 
         /// <summary>
         /// Ovverride the ToString method
         /// </summary>
-        /// <returns>The name, email, and phone number</returns>
+        /// <returns>The name, email, phone number, and Address</returns>
         public override string ToString()
         {
-            return "Name: " + Name + ", Email: " + Email + "PhoneNumber: " + PhoneNumber;
+            return "name: " + Name + ", email: " + Email + ", phone Number: " + PhoneNumber
+                + ",\nAddress: " + StudentAddress;
         }
 
 

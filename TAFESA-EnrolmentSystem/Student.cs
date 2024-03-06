@@ -17,11 +17,15 @@ namespace TAFESA_EnrolmentSystem
         private string studentID;
         private string program;
         private string dateRegistered;
+        // for enrollment class
+        private Enrollment enrollment;
 
         // Property Assessor methods
         public string StudentID { get; set; }
         public string Program { get; set; }
         public string DateRegistered { get; set; }
+        // for enrollment class
+        public Enrollment StudentEnrollment { get; set; }
 
 
         // no-args constructor
@@ -31,11 +35,20 @@ namespace TAFESA_EnrolmentSystem
         }
         
         // all-args constructor
-        public Student(string studentID, string program, string dateRegistered)
+        public Student(string studentID, string program, string dateRegistered) : this(studentID, program, dateRegistered, new Enrollment())
+        {
+            //StudentID = studentID;
+            //Program = program;
+            //DateRegistered = dateRegistered;
+        }
+
+        // new all-args constructor
+        public Student(string studentID, string program, string dateRegistered, Enrollment enrollment)
         {
             StudentID = studentID;
             Program = program;
             DateRegistered = dateRegistered;
+            StudentEnrollment = enrollment;
         }
 
         /// <summary>
@@ -44,7 +57,8 @@ namespace TAFESA_EnrolmentSystem
         /// <returns>The studentID, program, and date registered</returns>
         public override string ToString()
         {
-            return "studentID: " + StudentID + ", program: " + Program + ", date registered: " + DateRegistered;
+            return "studentID: " + StudentID + ", program: " + Program + ", date registered: " + DateRegistered
+                + ",\nEnrollment " + StudentEnrollment;
         }
 
     }
