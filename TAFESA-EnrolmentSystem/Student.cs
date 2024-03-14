@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace TAFESA_EnrolmentSystem
 {
-    public class Student : Person
+    public sealed class Student : Person
     {
         // constants
         const string DEF_STUDENTID = "N/A";
@@ -28,33 +29,43 @@ namespace TAFESA_EnrolmentSystem
         public Enrollment StudentEnrollment { get; set; }
 
 
-        // no-args constructor
-        public Student() : this(DEF_STUDENTID, DEF_PROGRAM, DEF_DATE_REGISTERED)
+        //no-args constructor
+        public Student() : this(DEF_STUDENTID, DEF_PROGRAM, DEF_DATE_REGISTERED, new Enrollment())
         {
-
-        }
         
-        // all-args constructor
-        public Student(string studentID, string program, string dateRegistered) : this(studentID, program, dateRegistered, new Enrollment())
+        }
+
+        // OLD all-args constructor
+        public Student(string studentID, string program, string dateRegistererd, Enrollment enrollment) 
+            : this(studentID, program, dateRegistererd, enrollment, DEF_NAME, DEF_EMAIL, DEF_PHONENUMBER, new Address())
         {
             //StudentID = studentID;
             //Program = program;
             //DateRegistered = dateRegistered;
+            //StudentEnrollment = enrollment;
         }
 
-        // new all-args constructor
-        public Student(string studentID, string program, string dateRegistered, Enrollment enrollment) : base(DEF_NAME, DEF_EMAIL, DEF_PHONENUMBER)
+        // constructor thats create the Student with the specific Enrollment details and Subject name
+        public Student(string studentID, string program, string dateRegistererd, string dateEnrolled, string grade, string semester, Subject subject) : 
+            this(studentID, program, dateRegistererd, new Enrollment(dateEnrolled, grade, semester, subject))
+        { 
+            
+        }
+
+        // New all-args constructor
+        public Student (string studentID, string program, string dateRegistererd, Enrollment enrollment, string name, string email, string phoneNumber, Address address) 
+            : base(name, email, phoneNumber, address)
         {
             StudentID = studentID;
             Program = program;
-            DateRegistered = dateRegistered;
+            DateRegistered = dateRegistererd;
             StudentEnrollment = enrollment;
         }
 
         /// <summary>
         /// Overriding the ToString method
         /// </summary>
-        /// <returns>The studentID, program, and date registered</returns>
+        /// <returns>The Person and Address, studentID, program, registered, Enrollment and Subject of the Student object</returns>
         public override string ToString()
         {
             return "Person-> " + base.ToString() + "\nstudentID: " + StudentID + ", program: " + Program + ", date registered: " + DateRegistered
@@ -62,25 +73,27 @@ namespace TAFESA_EnrolmentSystem
         }
 
         /// <summary>
-        /// Overriding the Equals method
+        /// Overriding the virtual Equals method
         /// </summary>
         /// <param name="obj"></param>
-        /// <returns>True if objects are equal otherwise not equal.</returns>
+        /// <returns>Boolean value when comparing Student instances.</returns>
         public override bool Equals(object obj)
         {
-            // check null object to avoid NullReferenceException
-            if(obj == null)
-                return false;
-            // chec reference equality
-            if(ReferenceEquals(this, obj))
-                return true;
-            // check different object types
-            if(obj.GetType() != GetType())
+            //// check null object to avoid NullReferenceException
+            //if(obj == null)
+            //    return false;
+            //// check reference equality
+            //if(ReferenceEquals(this, obj))
+            //    return true;
+            //// check different object types
+            //if(obj.GetType() != GetType())
+            //    return false;
+
+            if(!base.Equals(obj)) 
                 return false;
 
-            Student student = (Student)obj;
-            return student.StudentID == this.StudentID; 
-
+            Student ts = (Student) obj;
+            return this.StudentID == ts.StudentID; 
         }
 
         /// <summary>
@@ -89,7 +102,8 @@ namespace TAFESA_EnrolmentSystem
         /// <returns>The hashed student id.</returns>
         public override int GetHashCode()
         {
-            return this.StudentID.GetHashCode();
+            //return this.StudentID.GetHashCode();
+            return base.GetHashCode() ^ this.StudentID.GetHashCode();
         }
 
         /// <summary>
@@ -97,9 +111,10 @@ namespace TAFESA_EnrolmentSystem
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        /// <returns>True if Student x equals Student y.</returns>
-        public static bool operator == (Student student1, Student student2)
+        /// <returns>Boolean value when comparing two Student instances.</returns>
+        public static bool operator ==(Student student1, Student student2)
         {
+            // calls the static Equals method
             return object.Equals(student1, student2);
         }
 
@@ -108,8 +123,8 @@ namespace TAFESA_EnrolmentSystem
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        /// <returns>False if Student x not equal Student y</returns>
-        public static bool operator != (Student student1, Student student2)
+        /// <returns>Boolean value when comparing two Student instances.</returns>
+        public static bool operator !=(Student student1, Student student2)
         {
             return !object.Equals(student1, student2);
         }

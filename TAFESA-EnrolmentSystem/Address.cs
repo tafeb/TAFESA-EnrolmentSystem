@@ -48,11 +48,11 @@ namespace TAFESA_EnrolmentSystem
         /// <summary>
         /// Overriding the ToString method
         /// </summary>
-        /// <returns>The streetNum, streetName, suburb, postcode, and state</returns>
+        /// <returns>The streetNum, streetName, suburb, postcode, and state of Address object</returns>
         public override string ToString()
         {
             return "street number: " + StreetNum + ", street name: " + StreetName + ", suburb: " + Suburb
-                + ", postcode: " + postcode + ", state: " + State;
+                + ", postcode: " + Postcode + ", state: " + State;
         }
     }
 }

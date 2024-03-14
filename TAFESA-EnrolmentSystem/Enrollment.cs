@@ -33,7 +33,7 @@ namespace TAFESA_EnrolmentSystem
             
         }
 
-        // all-args constructor
+        // Old all-args constructor
         public Enrollment(string dateEnrolled, string grade, string semester) : this(dateEnrolled, grade, semester, new Subject())
         { 
             //DateEnrolled = dateEnrolled;
@@ -41,7 +41,7 @@ namespace TAFESA_EnrolmentSystem
             //Semester = semester;
         }
 
-        // new all-args constructor
+        // NEW all-args constructor
         public Enrollment(string dateEnrolled, string grade, string semester, Subject subject)
         {
             DateEnrolled = dateEnrolled;
@@ -53,7 +53,7 @@ namespace TAFESA_EnrolmentSystem
         /// <summary>
         /// Override the ToString method
         /// </summary>
-        /// <returns>The dateEnrolled, grade, semester, and Subject</returns>
+        /// <returns>The dateEnrolled, grade, semester, and Subject of Enrollment object</returns>
         public override string ToString()
         {
             return "date enrolled: " + DateEnrolled + ", grade: " + Grade + ", semester: " + Semester

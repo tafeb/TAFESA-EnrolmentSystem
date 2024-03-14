@@ -40,7 +40,7 @@ namespace TAFESA_EnrolmentSystem
         /// <summary>
         /// Overriding the ToString method
         /// </summary>
-        /// <returns>The subjectCode, subjectName, and cost</returns>
+        /// <returns>The subjectCode, subjectName, and cost of Subject object</returns>
         public override string ToString()
         {
             return "subject code: " + SubjectCode + ", subject name: " + SubjectName + ", cost: $" + Cost;
