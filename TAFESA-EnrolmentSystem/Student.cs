@@ -152,9 +152,7 @@ namespace TAFESA_EnrolmentSystem
         /// <returns>An integer that indicate the order of object in sorting order for Student.</returns>
         public int CompareTo(Student other)
         {
-            //return this.studentID.CompareTo(other.studentID);
-            // ordering, ignoring case
-            return string.Compare(this.studentID, other.studentID, StringComparison.CurrentCulture);
+            return this.studentID.CompareTo(other.studentID);
         }
 
         /// <summary>
