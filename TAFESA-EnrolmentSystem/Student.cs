@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TAFESA_EnrolmentSystem
 {
-    public sealed class Student : Person
+    public sealed class Student : Person, IComparable<Student>
     {
         // constants
         const string DEF_STUDENTID = "N/A";
@@ -79,18 +79,18 @@ namespace TAFESA_EnrolmentSystem
         /// <returns>Boolean value when comparing Student instances.</returns>
         public override bool Equals(object obj)
         {
-            //// check null object to avoid NullReferenceException
-            //if(obj == null)
-            //    return false;
-            //// check reference equality
-            //if(ReferenceEquals(this, obj))
-            //    return true;
-            //// check different object types
-            //if(obj.GetType() != GetType())
-            //    return false;
-
-            if(!base.Equals(obj)) 
+            // check null object to avoid NullReferenceException
+            if (obj == null)
                 return false;
+            // check reference equality
+            if (ReferenceEquals(this, obj))
+                return true;
+            // check different object types
+            if (obj.GetType() != GetType())
+                return false;
+
+            //if (!base.Equals(obj)) 
+            //    return false;
 
             Student ts = (Student) obj;
             return this.StudentID == ts.StudentID; 
@@ -109,8 +109,8 @@ namespace TAFESA_EnrolmentSystem
         /// <summary>
         /// Overloading the "==" operator
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
+        /// <param name="student1"></param>
+        /// <param name="student2"></param>
         /// <returns>Boolean value when comparing two Student instances.</returns>
         public static bool operator ==(Student student1, Student student2)
         {
@@ -121,13 +121,89 @@ namespace TAFESA_EnrolmentSystem
         /// <summary>
         /// Overloading the "!=" operator
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
+        /// <param name="student1"></param>
+        /// <param name="student2"></param>
         /// <returns>Boolean value when comparing two Student instances.</returns>
         public static bool operator !=(Student student1, Student student2)
         {
             return !object.Equals(student1, student2);
         }
 
+        /// <summary>
+        /// Override the CompareTo method
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns>An integer that indicate the order of object in sorting order.</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentException"></exception>
+        public int CompareTo(object obj)
+        {
+            if (obj == null)
+                throw new ArgumentNullException("obj");
+            if (!(obj is Student))
+                throw new ArgumentException("Expected Student instance", "obj");
+            return CompareTo((Student)obj);
+        }
+
+        /// <summary>
+        /// Override the CompareTo method for Student
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns>An integer that indicate the order of object in sorting order for Student.</returns>
+        public int CompareTo(Student other)
+        {
+            //return this.studentID.CompareTo(other.studentID);
+            // ordering, ignoring case
+            return string.Compare(this.studentID, other.studentID, StringComparison.CurrentCulture);
+        }
+
+        /// <summary>
+        /// Overloading the "<" operator
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns>An integer that indicate Student x is less than Student y.</returns>
+        public static bool operator <(Student x, Student y)
+        {
+            //return x.studentID < y.studentID;
+            return x.CompareTo(y) < 0;
+        }
+
+
+        /// <summary>
+        /// Overloading the "<=" operator
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns>An integer that indicate Student x is less than or equal to Student y.</returns>
+        public static bool operator <=(Student x, Student y)
+        {
+            //return x.studentID <= y.studentID;
+            return x.CompareTo(y) <= 0;
+        }
+
+        /// <summary>
+        /// Overloading the ">" operator
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns>An integer that indicate Student x is greater than Student y.</returns>
+        public static bool operator >(Student x, Student y)
+        {
+            //return x.studentID > y.studentID;
+            return x.CompareTo(y) > 0;
+        }
+
+        /// <summary>
+        /// Overloading the ">=" operator
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns>An integer that indicate Student x is greater than or equal to Student y.</returns>
+        public static bool operator >=(Student x, Student y)
+        {
+            //return x.studentID >= y.studentID;
+            return x.CompareTo(y) >= 0;
+        }
     }
 }
