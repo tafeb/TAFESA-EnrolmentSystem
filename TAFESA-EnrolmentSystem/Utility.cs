@@ -9,13 +9,13 @@ namespace TAFESA_EnrolmentSystem
     public class Utility
     {
         public static int LinearSeachArray<T>(T[] array, T target) where T : IComparable<T>
-        { 
-            
+        {
+            return 1;
         }
 
         public static int BinarySearchArray<T>(T[] array, T target) where T : IComparable<T>
-        { 
-        
+        {
+            return 1;
         }
     }
 }
