@@ -237,7 +237,7 @@ namespace TAFESA_EnrolmentSystem
                 }
                 else
                 { 
-                    Console.WriteLine("The student with StudentID of " + target.StudentID + " was not found!");
+                    Console.WriteLine("The student with StudentID of " + target.StudentID + " was not found! - index: " + index);
                 }
             }
             
@@ -263,7 +263,7 @@ namespace TAFESA_EnrolmentSystem
                 }
                 else
                 {
-                    Console.WriteLine("The student with StudentID of " + target.StudentID + " was not found!");
+                    Console.WriteLine("The student with StudentID of " + target.StudentID + " was not found! - index: " + index);
                 }
             }
             // Sort the tenStudents array in descending order, using InsertionSortDescending() method
