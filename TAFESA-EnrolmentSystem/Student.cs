@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TAFESA_EnrolmentSystem
 {
-    public sealed class Student : Person, IComparable<Student>
+    public class Student : Person, IComparable<Student>, IEquatable<Student>, IComparable
     {
         // constants
         const string DEF_STUDENTID = "N/A";
@@ -70,6 +70,11 @@ namespace TAFESA_EnrolmentSystem
         {
             return "Person-> " + base.ToString() + "\nstudentID: " + StudentID + ", program: " + Program + ", date registered: " + DateRegistered
                 + ",\nEnrollment-> " + StudentEnrollment;
+        }
+
+        public bool Equals(Student other)
+        {
+            return this.StudentID == other.StudentID;
         }
 
         /// <summary>
@@ -153,6 +158,7 @@ namespace TAFESA_EnrolmentSystem
         public int CompareTo(Student other)
         {
             return this.StudentID.CompareTo(other.StudentID);
+            //return string.Compare(this.StudentID, other.StudentID, StringComparison.CurrentCulture);
         }
 
         /// <summary>
@@ -166,7 +172,6 @@ namespace TAFESA_EnrolmentSystem
             //return x.studentID < y.studentID;
             return x.CompareTo(y) < 0;
         }
-
 
         /// <summary>
         /// Overloading the "<=" operator

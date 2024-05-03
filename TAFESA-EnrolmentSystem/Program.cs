@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace TAFESA_EnrolmentSystem
 {
@@ -160,34 +162,118 @@ namespace TAFESA_EnrolmentSystem
             //Console.ReadKey();
 
 
-            /* Testing Comparisions*/
-
+            /* Testing Comparisions */
             // create a new student using NEW all-args contructor
             Enrollment enrollment1 = new Enrollment();
             Student student1 = new Student("A00812345", "Diploma of Programming", "25/02/2022", enrollment1);
             Student student2 = new Student("A00115678", "Diploma of Cyber Security", "06/03/2023", enrollment1);
             Student student3 = new Student("A00727789", "Diploma Software Development", "01/06/2021", enrollment1);
             Student student4 = new Student("A00812345", "Diploma of Programming", "25/02/2022", enrollment1);
-            Student[] students = new Student[] { student1, student2, student3, student4 };
-
+            Student[] students = { student1, student2, student3, student4 };
+            // Output students array
+            Console.WriteLine("Array of student using studentID for comparison testings:");
             foreach (Student student in students)
             {
                 Console.Write(student.StudentID + " ");
             }
             Console.WriteLine();
             // Comparing students by their studentID
-            Console.WriteLine("\nComparing students by their studentID:");
+            Console.WriteLine("\n\tComparing students by their studentID:");
             Console.WriteLine("A00812345 < A00115678: " + (student1 < student2));
             Console.WriteLine("A00812345 > A00115678: " + (student1 > student2));
             Console.WriteLine("A0081234 == A0081234: " + (student1 == student4));
-
+            // Sort arrays with C# inbuilt sorting method
             Array.Sort(students);
-            Console.WriteLine("\nUsing Array.Sort() method to sort students by studentID");
+            Console.WriteLine("\nUsing Array.Sort() method to sort students by studentID:");
             foreach (Student student in students)
             {
                 Console.Write(student.StudentID + " ");
             }
 
+
+            /******** Testing Searching and Sorting ********/
+            Console.WriteLine("\n\n****************************************************************");
+            // create array of 10 students
+            Student[] tenStudents = {
+                                new Student("0012345", "Test - student00", "00/00/2024", enrollment1),
+                                new Student("0020124", "Test - student01", "01/01/2024", enrollment1),
+                                new Student("0081021", "Test - student02", "02/02/2024", enrollment1),
+                                new Student("0063368", "Test - student03", "03/03/2024", enrollment1),
+                                new Student("0012340", "Test - student04", "04/04/2024", enrollment1),
+                                new Student("0023602", "Test - student05", "05/05/2024", enrollment1),
+                                new Student("0055555", "Test - student06", "06/06/2024", enrollment1),
+                                new Student("0013116", "Test - student07", "07/07/2024", enrollment1),
+                                new Student("0033333", "Test - student08", "08/08/2024", enrollment1),
+                                new Student("0001234", "Test - student09", "09/09/2024", enrollment1)};
+
+            Console.WriteLine("\nArray of 10 students using their studentID for searching and sorting tests:");
+            foreach (Student aStudent in tenStudents)
+            {
+                Console.Write(aStudent.StudentID + " ");
+            }
+
+            // Creating targets for searching
+            Student target1 = new Student("0055555", "Test - student06", "06/06/2024", enrollment1);
+            Student target2 = new Student("0012340", "Test", "", enrollment1);
+            Student target3 = new Student("1111111", "Test - student06", "06/06/2024", enrollment1);
+            Console.WriteLine("\n\nTargets for searching and sorting:");
+            Console.WriteLine("target1 => studentID: " + target1.StudentID);
+            Console.WriteLine("target2 => studentID: " + target2.StudentID);
+            Console.WriteLine("target3 => studentID: " + target3.StudentID);
+
+            Student[] searchTargets = { target1, target2, target3 };
+            // Using linear search algorithm
+            Console.WriteLine("\n\tLinear seaarch of Student using studentIDs:");
+            //Console.WriteLine(Utility.LinearSeachArray(tenStudents, target1));
+            //Console.WriteLine(Utility.LinearSeachArray(tenStudents, target2));
+            //Console.WriteLine(Utility.LinearSeachArray(tenStudents, target3));
+            // Run search algorithm
+            foreach (Student target in searchTargets)
+            {
+                int index = Utility.LinearSeachArray(tenStudents, target);
+                if (index > 0)
+                {
+                    Console.WriteLine("The student with StudentID of " + target.StudentID + " was found at index: " + index);
+                }
+                else
+                { 
+                    Console.WriteLine("The student with StudentID of " + target.StudentID + " was not found!");
+                }
+            }
+            
+            // First sort the tenStudents
+            //Array.Sort(tenStudents);
+            // Sort tenStudentss array using the InserttionSortAscending() method
+            Utility.InsertionSortAscending(tenStudents);
+            Console.WriteLine("\nSorted tenStudents array using InsertionSortAscending() before binary searching:");
+            foreach (Student aStudent in tenStudents)
+            {
+                Console.Write(aStudent.StudentID + " ");
+            }
+
+            // Using binary search algorithm
+            Console.WriteLine("\n\n\tBinary seaarch of students using studentIDs:");
+            // Run search algorithm
+            foreach (Student target in searchTargets)
+            {
+                int index = Utility.BinarySearchArray(tenStudents, target);
+                if (index > 0)
+                {
+                    Console.WriteLine("The student with StudentID of " + target.StudentID + " was found at index: " + index);
+                }
+                else
+                {
+                    Console.WriteLine("The student with StudentID of " + target.StudentID + " was not found!");
+                }
+            }
+            // Sort the tenStudents array in descending order, using InsertionSortDescending() method
+            Utility.InsertionSortDescending(tenStudents);
+            Console.WriteLine("\nSorted tenStudents array in desceding order, using InsertionSortAscending()");
+            foreach (Student aStudent in tenStudents)
+            {
+                Console.Write(aStudent.StudentID + " ");
+            }
+            Console.WriteLine("\n\n****************************************************************");
             Console.ReadKey();
         }
 
