@@ -165,30 +165,30 @@ namespace TAFESA_EnrolmentSystem
             /* Testing Comparisions */
             // create a new student using NEW all-args contructor
             Enrollment enrollment1 = new Enrollment();
-            //Student student1 = new Student("A00812345", "Diploma of Programming", "25/02/2022", enrollment1);
-            //Student student2 = new Student("A00115678", "Diploma of Cyber Security", "06/03/2023", enrollment1);
-            //Student student3 = new Student("A00727789", "Diploma Software Development", "01/06/2021", enrollment1);
-            //Student student4 = new Student("A00812345", "Diploma of Programming", "25/02/2022", enrollment1);
-            //Student[] students = { student1, student2, student3, student4 };
-            //// Output students array
-            //Console.WriteLine("Array of student using studentID for comparison testings:");
-            //foreach (Student student in students)
-            //{
-            //    Console.Write(student.StudentID + " ");
-            //}
-            //Console.WriteLine();
-            //// Comparing students by their studentID
-            //Console.WriteLine("\n\tComparing students by their studentID:");
-            //Console.WriteLine("A00812345 < A00115678: " + (student1 < student2));
-            //Console.WriteLine("A00812345 > A00115678: " + (student1 > student2));
-            //Console.WriteLine("A0081234 == A0081234: " + (student1 == student4));
-            //// Sort arrays with C# inbuilt sorting method
-            //Array.Sort(students);
-            //Console.WriteLine("\nUsing Array.Sort() method to sort students by studentID:");
-            //foreach (Student student in students)
-            //{
-            //    Console.Write(student.StudentID + " ");
-            //}
+            Student student1 = new Student("A00812345", "Diploma of Programming", "25/02/2022", enrollment1);
+            Student student2 = new Student("A00115678", "Diploma of Cyber Security", "06/03/2023", enrollment1);
+            Student student3 = new Student("A00727789", "Diploma Software Development", "01/06/2021", enrollment1);
+            Student student4 = new Student("A00812345", "Diploma of Programming", "25/02/2022", enrollment1);
+            Student[] students = { student1, student2, student3, student4 };
+            // Output students array
+            Console.WriteLine("Array of student using studentID for comparison testings:");
+            foreach (Student student in students)
+            {
+                Console.Write(student.StudentID + " ");
+            }
+            Console.WriteLine();
+            // Comparing students by their studentID
+            Console.WriteLine("\n\tComparing students by their studentID:");
+            Console.WriteLine("A00812345 < A00115678: " + (student1 < student2));
+            Console.WriteLine("A00812345 > A00115678: " + (student1 > student2));
+            Console.WriteLine("A0081234 == A0081234: " + (student1 == student4));
+            // Sort arrays with C# inbuilt sorting method
+            Array.Sort(students);
+            Console.WriteLine("\nUsing Array.Sort() method to sort students by studentID:");
+            foreach (Student student in students)
+            {
+                Console.Write(student.StudentID + " ");
+            }
 
 
             /******** Testing Searching and Sorting ********/
