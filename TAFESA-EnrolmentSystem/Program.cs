@@ -259,7 +259,7 @@ namespace TAFESA_EnrolmentSystem
 
             // Sort the tenStudents array in asscending order, using InsertionSortAscending() method
             Utility.InsertionSortAscending(ascendingStudents);
-            Console.WriteLine("\nSorted tenStudents array in desceding order, using InsertionSortAscending()");
+            Console.WriteLine("\nSorted tenStudents array in ascending order, using InsertionSortAscending()");
             foreach (Student aStudent in ascendingStudents)
             {
                 Console.Write(aStudent.StudentID + " ");
@@ -272,7 +272,7 @@ namespace TAFESA_EnrolmentSystem
 
             // Sort the tenStudents array in descending order, using InsertionSortDescending() method
             Utility.InsertionSortDescending(descendingStudents);
-            Console.WriteLine("\nSorted tenStudents array in desceding order, using InsertionSortDescending()");
+            Console.WriteLine("\nSorted tenStudents array in descending order, using InsertionSortDescending()");
             foreach (Student aStudent in descendingStudents)
             {
                 Console.Write(aStudent.StudentID + " ");
