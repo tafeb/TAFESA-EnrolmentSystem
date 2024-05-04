@@ -158,7 +158,6 @@ namespace TAFESA_EnrolmentSystem
         public int CompareTo(Student other)
         {
             return this.StudentID.CompareTo(other.StudentID);
-            //return string.Compare(this.StudentID, other.StudentID, StringComparison.CurrentCulture);
         }
 
         /// <summary>
