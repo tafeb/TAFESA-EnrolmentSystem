@@ -19,7 +19,7 @@ namespace StudentTest
         [SetUp]
         public void Setup()
         { 
-            targetExist = new Student("0012340", "Test - student04", "04/04/2024", Utility.enrollment);
+            targetExist = new Student("0055555", "Test - student06", "06/06/2024", Utility.enrollment);
             targetNotExist = new Student("0000000", "Test", "00/00/0000", Utility.enrollment);
         }
 
@@ -27,16 +27,14 @@ namespace StudentTest
         [Test]
         public void LinearSearchFound()
         {
-            //var target = new Student("0012340", "Test - student04", "04/04/2024", Utility.enrollment);
             var result = Utility.LinearSeachArray(Utility.tenStudents, targetExist);
             // the target should be at index 4
-            Assert.AreEqual(4, result);
+            Assert.AreEqual(6, result);
         }
 
         [Test]
         public void LinearSearchNotFound()
         {
-            //var target = new Student("0000000", "Test", "00/00/0000", Utility.enrollment);
             var result = Utility.LinearSeachArray(Utility.tenStudents, targetNotExist);
             // the target is not in tenStudents array, should return -1
             Assert.AreEqual(-1, result);
@@ -45,7 +43,6 @@ namespace StudentTest
         [Test]
         public void BinarySearchFound()
         {
-            //var target = new Student("0001234", "Test - student09", "09/09/2024", Utility.enrollment);
             // Copy tenStudents array to another array before sorting
             Student[] copyTenStudents = (Student[])Utility.tenStudents.Clone();
             // First sort the tenStudents
@@ -53,14 +50,13 @@ namespace StudentTest
             var result = Utility.LinearSeachArray(copyTenStudents, targetExist);
 
             // the target should be at index 0 after the array is sorted
-            Assert.AreEqual(0, result);
+            Assert.AreEqual(7, result);
 
         }
 
         [Test]
         public void BinarySearchNotFound()
         {
-            //var target = new Student("0000000", "Test", "00/00/0000", Utility.enrollment);
             // Copy tenStudents array to another array before sorting
             Student[] copyTenStudents = (Student[])Utility.tenStudents.Clone();
             // First sort the tenStudents
