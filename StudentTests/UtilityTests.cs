@@ -34,116 +34,70 @@ namespace StudentTest
                                 new Student("0063368", "Test - student03", "03/03/2024", enrollment),
                                 new Student("0012340", "Test - student04", "04/04/2024", enrollment),
                                 new Student("0055555", "Test - student06", "06/06/2024", enrollment),
-                                new Student("0033333", "Test - student08", "08/08/2024", enrollment),                
+                                new Student("0033333", "Test - student08", "08/08/2024", enrollment),
                             };
-           
-        }
 
+        }
 
         [Test]
         public void LinearSearchFound()
         {
-            try
-            {
-                var result = Utility.LinearSeachArray(Utility.tenStudents, targetExist);
-                // the target should be at index 6
-                Assert.AreEqual(6, result);
-            }
-            catch (Exception ex)
-            {
-                Assert.Fail(ex.Message);
-            }
+            var result = Utility.LinearSeachArray(Utility.tenStudents, targetExist);
+            
+            // the target should be at index 6
+            Assert.AreEqual(6, result);
+
         }
 
         [Test]
         public void LinearSearchNotFound()
         {
-            try
-            {
-                var result = Utility.LinearSeachArray(Utility.tenStudents, targetNotExist);
-                // the target is not in tenStudents array, should return -1
-                Assert.AreEqual(-1, result);
-            }
-            catch (Exception ex) 
-            {
-                Assert.Fail(ex.Message);
-            }
+            var result = Utility.LinearSeachArray(Utility.tenStudents, targetNotExist);
             
+            // the target is not in tenStudents array, should return -1
+            Assert.AreEqual(-1, result);
         }
 
         [Test]
         public void BinarySearchFound()
         {
-            Student[] unsortedStudents = (Student[])Utility.tenStudents.Clone();
-            Array.Sort(unsortedStudents);
-            try
-            {
-                var result = Utility.BinarySearchArray(unsortedStudents, targetExist);
-
-                // the target should be at index 7 after the array is sorted
-                Assert.AreEqual(7, result);
-            }
-            catch (Exception ex) 
-            {
-                Assert.Fail(ex.Message);
-            }
+            Array.Sort(testStudents);
+            var result = Utility.BinarySearchArray(testStudents, targetExist);
             
-
+            // the target should be at index 7 after the array is sorted
+            Assert.AreEqual(7, result);
         }
 
         [Test]
         public void BinarySearchNotFound()
         {
-            Student[] unsortedStudents = (Student[])Utility.tenStudents.Clone();
-            Array.Sort(unsortedStudents);
-            try
-            {
-                
-                var result = Utility.BinarySearchArray(unsortedStudents, targetNotExist);
-
-                // the target is not in tenStudents array, should return -1
-                Assert.AreEqual(-1, result);
-            }
-            catch (Exception ex) 
-            {
-                Assert.Fail(ex.Message);
-            }
+            Array.Sort(testStudents);
+            var result = Utility.BinarySearchArray(testStudents, targetNotExist);
             
+            // the target is not in tenStudents array, should return -1
+            Assert.AreEqual(-1, result);
         }
 
         [Test]
         public void SortInsertionAscending()
         {
-            try
-            {
-                Utility.InsertionSortAscending(Utility.tenStudents);
-                Utility.InsertionSortAscending(testStudents);
+            Utility.InsertionSortAscending(Utility.tenStudents);
+            Utility.InsertionSortAscending(testStudents);
 
-                CollectionAssert.AreEqual(Utility.tenStudents, testStudents);
-            }
-            catch (Exception ex)
-            {
-                Assert.Fail(ex.Message);
-            }
-
+            Assert.That(testStudents, Is.Ordered.Ascending);
+            CollectionAssert.AreEqual(Utility.tenStudents, testStudents);
+       
         }
 
         [Test]
         public void SortInsertionDescending()
         {
-            try
-            {
-                Utility.InsertionSortDescending(Utility.tenStudents);
-                Utility.InsertionSortDescending(testStudents);
-
-                CollectionAssert.AreEqual(Utility.tenStudents, testStudents);
-            }
-            catch (Exception ex)
-            {
-                Assert.Fail(ex.Message);
-            }
-
+            Utility.InsertionSortDescending(Utility.tenStudents);
+            Utility.InsertionSortDescending(testStudents);
+            
+            Assert.That(testStudents, Is.Ordered.Descending);
+            CollectionAssert.AreEqual(Utility.tenStudents, testStudents);
+           
         }
-
     }
 }
