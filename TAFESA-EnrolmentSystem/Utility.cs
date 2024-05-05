@@ -11,7 +11,7 @@ namespace TAFESA_EnrolmentSystem
         public static Enrollment enrollment = new Enrollment();
 
         // create array of 10 students
-        public  static Student[] tenStudents = {
+        public static Student[] tenStudents = {
                                 new Student("0012345", "Test - student00", "00/00/2024", enrollment),
                                 new Student("0020124", "Test - student01", "01/01/2024", enrollment),
                                 new Student("0081021", "Test - student02", "02/02/2024", enrollment),

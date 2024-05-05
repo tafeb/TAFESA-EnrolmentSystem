@@ -13,89 +13,137 @@ namespace StudentTest
     [TestFixture]
     public class UtilityTests
     {
+        public Enrollment enrollment;
         private Student targetExist;
         private Student targetNotExist;
+        public Student[] testStudents;
 
         [SetUp]
         public void Setup()
         { 
-            targetExist = new Student("0055555", "Test - student06", "06/06/2024", Utility.enrollment);
-            targetNotExist = new Student("0000000", "Test", "00/00/0000", Utility.enrollment);
+            targetExist = new Student("0055555", "Test - student06", "06/06/2024", enrollment);
+            targetNotExist = new Student("0000000", "Test", "00/00/0000", enrollment);
+
+            testStudents = new Student[] {
+                                new Student("0023602", "Test - student05", "05/05/2024", enrollment),
+                                new Student("0012345", "Test - student00", "00/00/2024", enrollment),
+                                new Student("0012344", "Test - student09", "09/09/2024", enrollment),
+                                new Student("0020124", "Test - student01", "01/01/2024", enrollment),
+                                new Student("0013116", "Test - student07", "07/07/2024", enrollment),
+                                new Student("0081021", "Test - student02", "02/02/2024", enrollment),
+                                new Student("0063368", "Test - student03", "03/03/2024", enrollment),
+                                new Student("0012340", "Test - student04", "04/04/2024", enrollment),
+                                new Student("0055555", "Test - student06", "06/06/2024", enrollment),
+                                new Student("0033333", "Test - student08", "08/08/2024", enrollment),                
+                            };
+           
         }
 
 
         [Test]
         public void LinearSearchFound()
         {
-            var result = Utility.LinearSeachArray(Utility.tenStudents, targetExist);
-            // the target should be at index 4
-            Assert.AreEqual(6, result);
+            try
+            {
+                var result = Utility.LinearSeachArray(Utility.tenStudents, targetExist);
+                // the target should be at index 6
+                Assert.AreEqual(6, result);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
         }
 
         [Test]
         public void LinearSearchNotFound()
         {
-            var result = Utility.LinearSeachArray(Utility.tenStudents, targetNotExist);
-            // the target is not in tenStudents array, should return -1
-            Assert.AreEqual(-1, result);
+            try
+            {
+                var result = Utility.LinearSeachArray(Utility.tenStudents, targetNotExist);
+                // the target is not in tenStudents array, should return -1
+                Assert.AreEqual(-1, result);
+            }
+            catch (Exception ex) 
+            {
+                Assert.Fail(ex.Message);
+            }
+            
         }
 
         [Test]
         public void BinarySearchFound()
         {
-            // Copy tenStudents array to another array before sorting
-            Student[] copyTenStudents = (Student[])Utility.tenStudents.Clone();
-            // First sort the tenStudents
-            Array.Sort(copyTenStudents);
-            var result = Utility.LinearSeachArray(copyTenStudents, targetExist);
+            Student[] unsortedStudents = (Student[])Utility.tenStudents.Clone();
+            Array.Sort(unsortedStudents);
+            try
+            {
+                var result = Utility.BinarySearchArray(unsortedStudents, targetExist);
 
-            // the target should be at index 0 after the array is sorted
-            Assert.AreEqual(7, result);
+                // the target should be at index 7 after the array is sorted
+                Assert.AreEqual(7, result);
+            }
+            catch (Exception ex) 
+            {
+                Assert.Fail(ex.Message);
+            }
+            
 
         }
 
         [Test]
         public void BinarySearchNotFound()
         {
-            // Copy tenStudents array to another array before sorting
-            Student[] copyTenStudents = (Student[])Utility.tenStudents.Clone();
-            // First sort the tenStudents
-            Array.Sort(copyTenStudents);
-            var result = Utility.LinearSeachArray(copyTenStudents, targetNotExist);
+            Student[] unsortedStudents = (Student[])Utility.tenStudents.Clone();
+            Array.Sort(unsortedStudents);
+            try
+            {
+                
+                var result = Utility.BinarySearchArray(unsortedStudents, targetNotExist);
 
-            // the target is not in tenStudents array, should return -1
-            Assert.AreEqual(-1, result);
+                // the target is not in tenStudents array, should return -1
+                Assert.AreEqual(-1, result);
+            }
+            catch (Exception ex) 
+            {
+                Assert.Fail(ex.Message);
+            }
+            
         }
 
-        //[Test]
-        //public void SortInsertionAscending()
-        //{
-        //    // Copy tenStudents array to another array before sorting
-        //    Student[] expected = (Student[])Utility.tenStudents.Clone();
-        //    Student[] actual = (Student[])Utility.tenStudents.Clone();
-        //    // First sort the tenStudents
-        //    Utility.InsertionSortAscending(actual);
-        //    //Array.Sort(expected);
+        [Test]
+        public void SortInsertionAscending()
+        {
+            try
+            {
+                Utility.InsertionSortAscending(Utility.tenStudents);
+                Utility.InsertionSortAscending(testStudents);
 
-        //    CollectionAssert.IsOrdered(actual);
-        //    //CollectionAssert.AreEqual(expected, actual);
+                CollectionAssert.AreEqual(Utility.tenStudents, testStudents);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
 
-        //}
+        }
 
-        //[Test]
-        //public void SortInsertionDescending()
-        //{
-        //    // Copy tenStudents array to another array before sorting
-        //    Student[] expected = (Student[])Utility.tenStudents.Clone();
-        //    Student[] actual = (Student[])Utility.tenStudents.Clone();
-        //    // First sort the tenStudents
-        //    Utility.InsertionSortAscending(actual);
-        //    Array.Reverse(expected);
+        [Test]
+        public void SortInsertionDescending()
+        {
+            try
+            {
+                Utility.InsertionSortDescending(Utility.tenStudents);
+                Utility.InsertionSortDescending(testStudents);
 
-        //    CollectionAssert.IsOrdered(actual);
-        //    CollectionAssert.AreEqual(expected, actual);
+                CollectionAssert.AreEqual(Utility.tenStudents, testStudents);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
 
-        //}
+        }
 
     }
 }
