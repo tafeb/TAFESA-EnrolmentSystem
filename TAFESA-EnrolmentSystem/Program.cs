@@ -202,13 +202,11 @@ namespace TAFESA_EnrolmentSystem
 
             // Creating targets for searching
             Student target1 = new Student("0055555", "Test - student06", "06/06/2024", enrollment1);
-            Student target2 = new Student("0012340", "Test", "", enrollment1);
-            Student target3 = new Student("1111111", "Test - student06", "06/06/2024", enrollment1);
+            Student target2 = new Student("1111111", "Test - student06", "06/06/2024", enrollment1);
             Console.WriteLine("\n\nTargets for searching and sorting:");
             Console.WriteLine("target1 => studentID: " + target1.StudentID);
             Console.WriteLine("target2 => studentID: " + target2.StudentID);
-            Console.WriteLine("target3 => studentID: " + target3.StudentID);
-            Student[] searchTargets = { target1, target2, target3 };
+            Student[] searchTargets = { target1, target2 };
 
             /* Using linear search algorithm */
             Console.WriteLine("\n\tLinear seaarch of Student using studentIDs:");
