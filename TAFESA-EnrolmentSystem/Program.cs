@@ -164,119 +164,215 @@ namespace TAFESA_EnrolmentSystem
 
             /* Testing Comparisions */
             // create a new student using NEW all-args contructor
-            Enrollment enrollment1 = new Enrollment();
-            Student student1 = new Student("A00812345", "Diploma of Programming", "25/02/2022", enrollment1);
-            Student student2 = new Student("A00115678", "Diploma of Cyber Security", "06/03/2023", enrollment1);
-            Student student3 = new Student("A00727789", "Diploma Software Development", "01/06/2021", enrollment1);
-            Student student4 = new Student("A00812345", "Diploma of Programming", "25/02/2022", enrollment1);
-            Student[] students = { student1, student2, student3, student4 };
-            // Output students array
-            Console.WriteLine("Array of student using studentID for comparison testings:");
-            foreach (Student student in students)
+            //Enrollment enrollment1 = new Enrollment();
+            //Student student1 = new Student("A00812345", "Diploma of Programming", "25/02/2022", enrollment1);
+            //Student student2 = new Student("A00115678", "Diploma of Cyber Security", "06/03/2023", enrollment1);
+            //Student student3 = new Student("A00727789", "Diploma Software Development", "01/06/2021", enrollment1);
+            //Student student4 = new Student("A00812345", "Diploma of Programming", "25/02/2022", enrollment1);
+            //Student[] students = { student1, student2, student3, student4 };
+            //// Output students array
+            //Console.WriteLine("Array of student using studentID for comparison testings:");
+            //foreach (Student student in students)
+            //{
+            //    Console.Write(student.StudentID + " ");
+            //}
+            //Console.WriteLine();
+            //// Comparing students by their studentID
+            //Console.WriteLine("\n\tComparing students by their studentID:");
+            //Console.WriteLine("A00812345 < A00115678: " + (student1 < student2));
+            //Console.WriteLine("A00812345 > A00115678: " + (student1 > student2));
+            //Console.WriteLine("A0081234 == A0081234: " + (student1 == student4));
+            //// Sort arrays with C# inbuilt sorting method
+            //Array.Sort(students);
+            //Console.WriteLine("\nUsing Array.Sort() method to sort students by studentID:");
+            //foreach (Student student in students)
+            //{
+            //    Console.Write(student.StudentID + " ");
+            //}
+
+
+            ///******** Testing Searching and Sorting ********/
+            //Console.WriteLine("\n\n****************************************************************");
+            //// Printout the array of 10 students
+            //Console.WriteLine("\nArray of 10 students using their studentID for searching and sorting tests:");
+            //foreach (Student aStudent in Utility.tenStudents)
+            //{
+            //    Console.Write(aStudent.StudentID + " ");
+            //}
+
+            //// Creating targets for searching
+            //Student target1 = new Student("0055555", "Test - student06", "06/06/2024", enrollment1);
+            //Student target2 = new Student("1111111", "Test - student06", "06/06/2024", enrollment1);
+            //Console.WriteLine("\n\nTargets for searching and sorting:");
+            //Console.WriteLine("target1 => studentID: " + target1.StudentID);
+            //Console.WriteLine("target2 => studentID: " + target2.StudentID);
+            //Student[] searchTargets = { target1, target2 };
+
+            ///* Using linear search algorithm */
+            //Console.WriteLine("\n\tLinear seaarch of Student using studentIDs:");
+            //// Run search algorithm
+            //foreach (Student target in searchTargets)
+            //{
+            //    int index = Utility.LinearSeachArray(Utility.tenStudents, target);
+            //    if (index > 0)
+            //    {
+            //        Console.WriteLine("The student with StudentID of " + target.StudentID + " was found at index: " + index);
+            //    }
+            //    else
+            //    { 
+            //        Console.WriteLine("The student with StudentID of " + target.StudentID + " was not found! Returned index: " + index);
+            //    }
+            //}
+
+            //// Copy tenStudents array to another array before sorting
+            //Student[] copyTenStudents = (Student[])Utility.tenStudents.Clone();
+            //// First sort the tenStudents
+            //Array.Sort(copyTenStudents);
+            //// Printout the sorted array of 10 students
+            //Console.WriteLine("\nSorted tenStudents array using Array.Sort() before binary searching:");
+            //foreach (Student aStudent in copyTenStudents)
+            //{
+            //    Console.Write(aStudent.StudentID + " ");
+            //}
+
+            ///* Using binary search algorithm */
+            //Console.WriteLine("\n\n\tBinary seaarch of students using studentIDs:");
+            //// Run search algorithm
+            //foreach (Student target in searchTargets)
+            //{
+            //    int index = Utility.BinarySearchArray(copyTenStudents, target);
+            //    if (index > 0)
+            //    {
+            //        Console.WriteLine("The student with StudentID of " + target.StudentID + " was found at index: " + index);
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("The student with StudentID of " + target.StudentID + " was not found! Returned index: " + index);
+            //    }
+            //}
+
+            ///* Using InsertionSortAscending algorithm */
+            //// Copy tenStudents array to another array before sorting
+            //Student[] ascendingStudents = (Student[])Utility.tenStudents.Clone();
+
+            //// Sort the tenStudents array in asscending order, using InsertionSortAscending() method
+            //Utility.InsertionSortAscending(ascendingStudents);
+            //Console.WriteLine("\nSorted tenStudents array in ascending order, using InsertionSortAscending()");
+            //foreach (Student aStudent in ascendingStudents)
+            //{
+            //    Console.Write(aStudent.StudentID + " ");
+            //}
+            //Console.WriteLine();
+
+            ///* Using InsertionSortDescending algorithm */
+            //// Copy tenStudents array to another array before sorting
+            //Student[] descendingStudents = (Student[])Utility.tenStudents.Clone();
+
+            //// Sort the tenStudents array in descending order, using InsertionSortDescending() method
+            //Utility.InsertionSortDescending(descendingStudents);
+            //Console.WriteLine("\nSorted tenStudents array in descending order, using InsertionSortDescending()");
+            //foreach (Student aStudent in descendingStudents)
+            //{
+            //    Console.Write(aStudent.StudentID + " ");
+            //}
+            //Console.WriteLine("\n\n****************************************************************");
+
+
+            //Console.ReadKey();
+
+            /*Testing Single Linked List*/
+
+            Enrollment enrollment = new Enrollment();
+            // Create a single linked list of Students
+            SingleLinkedList<Student> studentList = new SingleLinkedList<Student>
             {
-                Console.Write(student.StudentID + " ");
-            }
-            Console.WriteLine();
-            // Comparing students by their studentID
-            Console.WriteLine("\n\tComparing students by their studentID:");
-            Console.WriteLine("A00812345 < A00115678: " + (student1 < student2));
-            Console.WriteLine("A00812345 > A00115678: " + (student1 > student2));
-            Console.WriteLine("A0081234 == A0081234: " + (student1 == student4));
-            // Sort arrays with C# inbuilt sorting method
-            Array.Sort(students);
-            Console.WriteLine("\nUsing Array.Sort() method to sort students by studentID:");
-            foreach (Student student in students)
+                new Student("0012345", "Test - student00", "00/00/2024", enrollment),
+                new Student("0020124", "Test - student01", "01/01/2024", enrollment),
+                new Student("0081021", "Test - student02", "02/02/2024", enrollment),
+                new Student("0063368", "Test - student03", "03/03/2024", enrollment),
+                new Student("0012340", "Test - student04", "04/04/2024", enrollment),
+            };
+
+            // Printout the list of Students, showing just their student ids
+            Console.WriteLine("The list of students, showing just their student ids:");
+            foreach (Student student in studentList)
             {
-                Console.Write(student.StudentID + " ");
+                Console.Write(" " + student.StudentID + " ");
             }
+            Console.WriteLine("\nNumber of students in the list: " + studentList.Count);
 
-
-            /******** Testing Searching and Sorting ********/
-            Console.WriteLine("\n\n****************************************************************");
-            // Printout the array of 10 students
-            Console.WriteLine("\nArray of 10 students using their studentID for searching and sorting tests:");
-            foreach (Student aStudent in Utility.tenStudents)
+            // Test adding Student instance to the Head
+            Console.WriteLine("\nThe list before:");
+            foreach (Student student in studentList)
             {
-                Console.Write(aStudent.StudentID + " ");
+                Console.Write(" " + student.StudentID + " ");
             }
-
-            // Creating targets for searching
-            Student target1 = new Student("0055555", "Test - student06", "06/06/2024", enrollment1);
-            Student target2 = new Student("1111111", "Test - student06", "06/06/2024", enrollment1);
-            Console.WriteLine("\n\nTargets for searching and sorting:");
-            Console.WriteLine("target1 => studentID: " + target1.StudentID);
-            Console.WriteLine("target2 => studentID: " + target2.StudentID);
-            Student[] searchTargets = { target1, target2 };
-
-            /* Using linear search algorithm */
-            Console.WriteLine("\n\tLinear seaarch of Student using studentIDs:");
-            // Run search algorithm
-            foreach (Student target in searchTargets)
+            Console.WriteLine("\nNumber of items in the list: " + studentList.Count);
+            studentList.AddFirst(new Student("3333333", "Test", "00/00/2024", enrollment));
+            Console.WriteLine("\nThe list after: calling AddFirst method");
+            foreach (Student student in studentList)
             {
-                int index = Utility.LinearSeachArray(Utility.tenStudents, target);
-                if (index > 0)
-                {
-                    Console.WriteLine("The student with StudentID of " + target.StudentID + " was found at index: " + index);
-                }
-                else
-                { 
-                    Console.WriteLine("The student with StudentID of " + target.StudentID + " was not found! Returned index: " + index);
-                }
+                Console.Write(" " + student.StudentID + " ");
             }
+            Console.WriteLine("\nNumber of items in the list: " + studentList.Count);
 
-            // Copy tenStudents array to another array before sorting
-            Student[] copyTenStudents = (Student[])Utility.tenStudents.Clone();
-            // First sort the tenStudents
-            Array.Sort(copyTenStudents);
-            // Printout the sorted array of 10 students
-            Console.WriteLine("\nSorted tenStudents array using Array.Sort() before binary searching:");
-            foreach (Student aStudent in copyTenStudents)
+            // Test adding Student instance to the Tail
+            Console.WriteLine("\nThe list before:");
+            foreach (Student student in studentList)
             {
-                Console.Write(aStudent.StudentID + " ");
+                Console.Write(" " + student.StudentID + " ");
             }
-
-            /* Using binary search algorithm */
-            Console.WriteLine("\n\n\tBinary seaarch of students using studentIDs:");
-            // Run search algorithm
-            foreach (Student target in searchTargets)
+            Console.WriteLine("\nNumber of items in the list: " + studentList.Count);
+            studentList.AddLast(new Student("1111111", "Test", "00/00/2024", enrollment));
+            Console.WriteLine("\nThe list after: calling AddLast method");
+            foreach (Student student in studentList)
             {
-                int index = Utility.BinarySearchArray(copyTenStudents, target);
-                if (index > 0)
-                {
-                    Console.WriteLine("The student with StudentID of " + target.StudentID + " was found at index: " + index);
-                }
-                else
-                {
-                    Console.WriteLine("The student with StudentID of " + target.StudentID + " was not found! Returned index: " + index);
-                }
+                Console.Write(" " + student.StudentID + " ");
             }
+            Console.WriteLine("\nNumber of items in the list: " + studentList.Count);
 
-            /* Using InsertionSortAscending algorithm */
-            // Copy tenStudents array to another array before sorting
-            Student[] ascendingStudents = (Student[])Utility.tenStudents.Clone();
-
-            // Sort the tenStudents array in asscending order, using InsertionSortAscending() method
-            Utility.InsertionSortAscending(ascendingStudents);
-            Console.WriteLine("\nSorted tenStudents array in ascending order, using InsertionSortAscending()");
-            foreach (Student aStudent in ascendingStudents)
+            // Testing find a particular Student instance in the list 
+            Console.WriteLine("\nTesting the Contains() method to find a particular Student with studentID = 0063368 in the list");
+            var findTarget = studentList.Contains(new Student("0063368", "Test - student03", "03/03/2024", enrollment));
+            // if findTarget returns true
+            if (findTarget)
             {
-                Console.Write(aStudent.StudentID + " ");
+                Console.WriteLine("The student is in the list.");
             }
-            Console.WriteLine();
-
-            /* Using InsertionSortDescending algorithm */
-            // Copy tenStudents array to another array before sorting
-            Student[] descendingStudents = (Student[])Utility.tenStudents.Clone();
-
-            // Sort the tenStudents array in descending order, using InsertionSortDescending() method
-            Utility.InsertionSortDescending(descendingStudents);
-            Console.WriteLine("\nSorted tenStudents array in descending order, using InsertionSortDescending()");
-            foreach (Student aStudent in descendingStudents)
+            else
             {
-                Console.Write(aStudent.StudentID + " ");
+                Console.WriteLine("The student is not in the list.");
             }
-            Console.WriteLine("\n\n****************************************************************");
-        
+
+            // Test removing Student instance to from beginning of list
+            Console.WriteLine("\nThe list before:");
+            foreach (Student student in studentList)
+            {
+                Console.Write(" " + student.StudentID + " ");
+            }
+            Console.WriteLine("\nNumber of items in the list: " + studentList.Count);
+            studentList.RemoveFirst();
+            Console.WriteLine("\nThe list after: calling RemoveFirst() method");
+            foreach (Student student in studentList)
+            {
+                Console.Write(" " + student.StudentID + " ");
+            }
+            Console.WriteLine("\nNumber of items in the list: " + studentList.Count);
+
+            // Test removing Student instance to from end of list
+            Console.WriteLine("\nThe list before:");
+            foreach (Student student in studentList)
+            {
+                Console.Write(" " + student.StudentID + " ");
+            }
+            Console.WriteLine("\nNumber of items in the list: " + studentList.Count);
+            studentList.RemoveLast();
+            Console.WriteLine("\nThe list after: calling RemoveLast() method");
+            foreach (Student student in studentList)
+            {
+                Console.Write(" " + student.StudentID + " ");
+            }
+            Console.WriteLine("\nNumber of items in the list: " + studentList.Count);
 
             Console.ReadKey();
         }
