@@ -280,7 +280,8 @@ namespace TAFESA_EnrolmentSystem
 
             //Console.ReadKey();
 
-            /*Testing Single Linked List*/
+            /***** Testing Single Linked List *****/
+            Console.WriteLine("***** Testing Single Linked List *****");
 
             Enrollment enrollment = new Enrollment();
             // Create a single linked list of Students
@@ -373,7 +374,103 @@ namespace TAFESA_EnrolmentSystem
                 Console.Write(" " + student.StudentID + " ");
             }
             Console.WriteLine("\nNumber of items in the list: " + studentList.Count);
+            Console.WriteLine("\n***** End Testing Single Linked List *****\n");
+            /***** End Testing Single Linked List *****/
 
+            /***** Testing Double Linked List *****/
+            Console.WriteLine("***** Testing Double Linked List *****");
+
+            SingleLinkedList<Student> studentListDouble = new SingleLinkedList<Student>
+            {
+                new Student("0023602", "Test - student05", "05/05/2024", enrollment),
+                new Student("0055555", "Test - student06", "06/06/2024", enrollment),
+                new Student("0013116", "Test - student07", "07/07/2024", enrollment),
+                new Student("0033333", "Test - student08", "08/08/2024", enrollment),
+                new Student("0012344", "Test - student09", "09/09/2024", enrollment)
+            };
+
+            // Printout the list of Students, showing just their student ids
+            Console.WriteLine("The list of students, showing just their student ids:");
+            foreach (Student student in studentListDouble)
+            {
+                Console.Write(" " + student.StudentID + " ");
+            }
+            Console.WriteLine("\nNumber of students in the list: " + studentListDouble.Count);
+
+            // Test adding Student instance to the Head
+            Console.WriteLine("\nThe list before:");
+            foreach (Student student in studentListDouble)
+            {
+                Console.Write(" " + student.StudentID + " ");
+            }
+            Console.WriteLine("\nNumber of items in the list: " + studentListDouble.Count);
+            studentListDouble.AddFirst(new Student("4444444", "Test", "00/00/2024", enrollment));
+            Console.WriteLine("\nThe list after: calling AddFirst method");
+            foreach (Student student in studentListDouble)
+            {
+                Console.Write(" " + student.StudentID + " ");
+            }
+            Console.WriteLine("\nNumber of items in the list: " + studentListDouble.Count);
+
+            // Test adding Student instance to the Tail
+            Console.WriteLine("\nThe list before:");
+            foreach (Student student in studentListDouble)
+            {
+                Console.Write(" " + student.StudentID + " ");
+            }
+            Console.WriteLine("\nNumber of items in the list: " + studentListDouble.Count);
+            studentListDouble.AddLast(new Student("7777777", "Test", "00/00/2024", enrollment));
+            Console.WriteLine("\nThe list after: calling AddLast method");
+            foreach (Student student in studentListDouble)
+            {
+                Console.Write(" " + student.StudentID + " ");
+            }
+            Console.WriteLine("\nNumber of items in the list: " + studentListDouble.Count);
+
+            // Testing find a particular Student instance in the list 
+            Console.WriteLine("\nTesting the Contains() method to find a particular Student with studentID = 0063368 in the list");
+            var findTargetDouble = studentListDouble.Contains(new Student("0013116", "Test - student07", "07/07/2024", enrollment));
+            // if findTarget returns true
+            if (findTargetDouble)
+            {
+                Console.WriteLine("The student is in the list.");
+            }
+            else
+            {
+                Console.WriteLine("The student is not in the list.");
+            }
+
+            // Test removing Student instance to from beginning of list
+            Console.WriteLine("\nThe list before:");
+            foreach (Student student in studentListDouble)
+            {
+                Console.Write(" " + student.StudentID + " ");
+            }
+            Console.WriteLine("\nNumber of items in the list: " + studentListDouble.Count);
+            studentListDouble.RemoveFirst();
+            Console.WriteLine("\nThe list after: calling RemoveFirst() method");
+            foreach (Student student in studentListDouble)
+            {
+                Console.Write(" " + student.StudentID + " ");
+            }
+            Console.WriteLine("\nNumber of items in the list: " + studentListDouble.Count);
+
+            // Test removing Student instance to from end of list
+            Console.WriteLine("\nThe list before:");
+            foreach (Student student in studentListDouble)
+            {
+                Console.Write(" " + student.StudentID + " ");
+            }
+            Console.WriteLine("\nNumber of items in the list: " + studentListDouble.Count);
+            studentListDouble.RemoveLast();
+            Console.WriteLine("\nThe list after: calling RemoveLast() method");
+            foreach (Student student in studentListDouble)
+            {
+                Console.Write(" " + student.StudentID + " ");
+            }
+            Console.WriteLine("\nNumber of items in the list: " + studentListDouble.Count);
+            Console.WriteLine("\n***** End Testing Double Linked List *****\n");
+            /***** End Testing Double Linked List *****/
             Console.ReadKey();
         }
 
