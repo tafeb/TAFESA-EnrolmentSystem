@@ -471,6 +471,39 @@ namespace TAFESA_EnrolmentSystem
             Console.WriteLine("\nNumber of items in the list: " + studentListDouble.Count);
             Console.WriteLine("\n***** End Testing Double Linked List *****\n");
             /***** End Testing Double Linked List *****/
+
+            /***** Testing Binary Tree *****/
+            Console.WriteLine("***** Testing Binary Tree *****");
+            BinaryTree stringTree = new BinaryTree();
+
+            // Add student ids
+            stringTree.Add("1");
+            stringTree.Add("2");
+            stringTree.Add("7");
+            stringTree.Add("3");
+            stringTree.Add("6");
+            stringTree.Add("5");
+            stringTree.Add("8");
+
+            Console.WriteLine("\nPreOrder Traversal:");
+            stringTree.TraversePreOrder(stringTree.Root);
+
+            Console.WriteLine("\n\nInOrder Traversal:");
+            stringTree.TraverseInOrder(stringTree.Root);
+
+            Console.WriteLine("\n\nPostOrder Traversal:");
+            stringTree.TraversePostOrder(stringTree.Root);
+
+            stringTree.Remove("7");
+            stringTree.Remove("8");
+
+            Console.WriteLine("\n\nPreOrder Traversal After Removing Operation:");
+            stringTree.TraversePreOrder(stringTree.Root);
+            Console.WriteLine();
+
+            Console.WriteLine("\n***** End Testing Binary Tree *****");
+            /***** End Testing Binary Tree *****/
+
             Console.ReadKey();
         }
 

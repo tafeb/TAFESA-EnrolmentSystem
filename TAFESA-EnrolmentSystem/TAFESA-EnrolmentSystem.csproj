@@ -44,9 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Address.cs" />
+    <Compile Include="BinaryTree.cs" />
     <Compile Include="DoublyLinkedList.cs" />
     <Compile Include="Enrollment.cs" />
     <Compile Include="LinkedListNode.cs" />
+    <Compile Include="Node.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
