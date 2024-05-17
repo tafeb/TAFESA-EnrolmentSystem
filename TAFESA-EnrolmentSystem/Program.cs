@@ -380,7 +380,7 @@ namespace TAFESA_EnrolmentSystem
             /***** Testing Double Linked List *****/
             Console.WriteLine("***** Testing Double Linked List *****");
 
-            SingleLinkedList<Student> studentListDouble = new SingleLinkedList<Student>
+            DoublyLinkedList<Student> studentListDouble = new DoublyLinkedList<Student>
             {
                 new Student("0023602", "Test - student05", "05/05/2024", enrollment),
                 new Student("0055555", "Test - student06", "06/06/2024", enrollment),
