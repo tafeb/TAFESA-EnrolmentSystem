@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace TAFESA_EnrolmentSystem
 {
-    public class BinaryTree
+    public class BinaryTree<T> where T : IComparable
     {
-        public Node Root { get; set; }
+        public Node<T> Root { get; set; }
 
-        public bool Add(string value)
+        public bool Add(T value) 
         {
-            Node before = null;
-            Node after = this.Root;
+            Node<T> before = null;
+            Node<T> after = this.Root;
 
             while (after != null)
             {
                 before = after;
-                if (value.CompareTo(after.StringData) < 0) //Is a new node in the left tree? (value < after.Data)
+                if (value.CompareTo(after.Data) < 0) //Is a new node in the left tree? (value < after.Data)
                 {
                     after = after.LeftNode;
                 }
-                else if (value.CompareTo(after.StringData) > 0) //Is a new node in right tree? (value > after.Data)
+                else if (value.CompareTo(after.Data) > 0) //Is a new node in right tree? (value > after.Data)
                 {
                     after = after.RightNode;
                 }
@@ -33,8 +33,8 @@ namespace TAFESA_EnrolmentSystem
                 }
             }
 
-            Node newNode = new Node();
-            newNode.StringData = value;
+            Node<T> newNode = new Node<T>();
+            newNode.Data = value;
 
             if (this.Root == null) //Tree is empty
             {
@@ -42,7 +42,7 @@ namespace TAFESA_EnrolmentSystem
             }
             else
             {
-                if (value.CompareTo(before.StringData) < 0) // (value < before.Data)
+                if (value.CompareTo(before.Data) < 0) // (value < before.Data)
                 {
                     before.LeftNode = newNode;
                 }
@@ -54,20 +54,20 @@ namespace TAFESA_EnrolmentSystem
             return true;
         }
 
-        public Node Find(string value)
+        public Node<T> Find(T value)
         {
             return this.Find(value, this.Root);
         }
 
-        private Node Find(string value, Node parent)
+        private Node<T> Find(T value, Node<T> parent) 
         {
             if (parent != null)
             {
-                if (value.CompareTo(parent.StringData) == 0) //(value == parent.Data)
+                if (value.Equals(parent.Data)) //(value == parent.Data)
                 {
                     return parent;
                 }
-                if (value.CompareTo(parent.StringData) < 0) //(value < parent.Data)
+                if (value.CompareTo(parent.Data) < 0) //(value < parent.Data)
                 {
                     return Find(value, parent.LeftNode);
                 }
@@ -79,23 +79,23 @@ namespace TAFESA_EnrolmentSystem
             return null;
         }
 
-        public void Remove(string value)
+        public void Remove(T value)
         {
             this.Root = Remove(this.Root, value);
         }
 
-        private Node Remove(Node parent, string key)
+        private Node<T> Remove(Node<T> parent, T key)
         {
             if (parent == null)
             {
                 return parent;
             }
 
-            if (key.CompareTo(parent.StringData) < 0) //(key < parent.Data)
+            if (key.CompareTo(parent.Data) < 0) //(key < parent.Data)
             {
                 parent.LeftNode = Remove(parent.LeftNode, key);
             }
-            else if (key.CompareTo(parent.StringData) > 0) //(key > parent.Data)
+            else if (key.CompareTo(parent.Data) > 0) //(key > parent.Data)
             {
                 parent.RightNode = Remove(parent.RightNode, key);
             }
@@ -112,54 +112,55 @@ namespace TAFESA_EnrolmentSystem
                 }
 
                 // node with two children: Get the inorder successor(smallest in the right subtree)
-                parent.StringData = MinValue(parent.RightNode);
+                parent.Data = MinValue(parent.RightNode);
                 // Delete the inorder successor
-                parent.RightNode = Remove(parent.RightNode, parent.StringData);
+                parent.RightNode = Remove(parent.RightNode, parent.Data);
             }
             return parent;
         }
 
-        private string MinValue(Node node)
+        private T MinValue(Node<T> node)
         {
-            string minv = node.StringData;
+            T minv = node.Data;
 
             while (node.LeftNode != null)
             {
-                minv = node.LeftNode.StringData;
+                minv = node.LeftNode.Data;
                 node = node.LeftNode;
             }
             return minv;
         }
 
-        public void TraversePreOrder(Node parent)
+        public void TraversePreOrder(Node<T> parent)
         {
             if (parent != null)
             {
-                Console.Write(parent.StringData + " ");
+                Console.Write(parent.Data + " ");
                 TraversePreOrder(parent.LeftNode);
                 TraversePreOrder(parent.RightNode);
             }
         }
 
-        public void TraverseInOrder(Node parent)
+        public void TraverseInOrder(Node<T> parent)
         {
             if (parent != null)
             {
                 TraverseInOrder(parent.LeftNode);
-                Console.Write(parent.StringData + " ");
+                Console.Write(parent.Data + " ");
                 TraverseInOrder(parent.RightNode);
             }
         }
 
-        public void TraversePostOrder(Node parent)
+        public void TraversePostOrder(Node<T> parent)
         {
             if (parent != null)
             {
                 TraversePostOrder(parent.LeftNode);
                 TraversePostOrder(parent.RightNode);
-                Console.Write(parent.StringData + " ");
+                Console.Write(parent.Data + " ");
             }
         }
+
     }
 }
 

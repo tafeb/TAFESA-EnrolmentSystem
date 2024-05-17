@@ -474,31 +474,31 @@ namespace TAFESA_EnrolmentSystem
 
             /***** Testing Binary Tree *****/
             Console.WriteLine("***** Testing Binary Tree *****");
-            BinaryTree stringTree = new BinaryTree();
+            BinaryTree<Student> binaryTree = new BinaryTree<Student>();
 
-            // Add student ids
-            stringTree.Add("1");
-            stringTree.Add("2");
-            stringTree.Add("7");
-            stringTree.Add("3");
-            stringTree.Add("6");
-            stringTree.Add("5");
-            stringTree.Add("8");
+            // Add students with simple studentIDs
+            binaryTree.Add(new Student("1", "Test", "00/00/2024", enrollment));
+            binaryTree.Add(new Student("2", "Test", "00/00/2024", enrollment));
+            binaryTree.Add(new Student("7", "Test", "00/00/2024", enrollment));
+            binaryTree.Add(new Student("3", "Test", "00/00/2024", enrollment));
+            binaryTree.Add(new Student("6", "Test", "00/00/2024", enrollment));
+            binaryTree.Add(new Student("5", "Test", "00/00/2024", enrollment));
+            binaryTree.Add(new Student("8", "Test", "00/00/2024", enrollment));
 
             Console.WriteLine("\nPreOrder Traversal:");
-            stringTree.TraversePreOrder(stringTree.Root);
+            binaryTree.TraversePreOrder(binaryTree.Root);
 
             Console.WriteLine("\n\nInOrder Traversal:");
-            stringTree.TraverseInOrder(stringTree.Root);
+            binaryTree.TraverseInOrder(binaryTree.Root);
 
             Console.WriteLine("\n\nPostOrder Traversal:");
-            stringTree.TraversePostOrder(stringTree.Root);
+            binaryTree.TraversePostOrder(binaryTree.Root);
 
-            stringTree.Remove("7");
-            stringTree.Remove("8");
+            binaryTree.Remove(new Student("7", "Test", "00/05/2024", enrollment));
+            binaryTree.Remove(new Student("8", "Test", "00/05/2024", enrollment));
 
             Console.WriteLine("\n\nPreOrder Traversal After Removing Operation:");
-            stringTree.TraversePreOrder(stringTree.Root);
+            binaryTree.TraversePreOrder(binaryTree.Root);
             Console.WriteLine();
 
             Console.WriteLine("\n***** End Testing Binary Tree *****");

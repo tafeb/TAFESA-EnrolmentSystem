@@ -7,11 +7,13 @@ using System.Xml.Linq;
 
 namespace TAFESA_EnrolmentSystem
 {
-    public class Node
+    public class Node<T>
     {
-        public Node LeftNode { get; set; }
-        public Node RightNode { get; set; }
-        public int Data { get; set; }
-        public string StringData { get; set; }
+        public Node<T> LeftNode { get; set; }
+        public Node<T> RightNode { get; set; }
+        public T Data { get; set; }
+
+        public Student Student { get; set; }
+
     }
 }

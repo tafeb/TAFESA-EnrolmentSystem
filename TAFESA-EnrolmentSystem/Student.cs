@@ -62,14 +62,26 @@ namespace TAFESA_EnrolmentSystem
             StudentEnrollment = enrollment;
         }
 
+        //// Constructor has only the studentID, for simply testing of list
+        //public Student(string studentID)
+        //{
+        //    StudentID = studentID;
+        //}
+
         /// <summary>
         /// Overriding the ToString method
         /// </summary>
         /// <returns>The Person and Address, studentID, program, registered, Enrollment and Subject of the Student object</returns>
+        //public override string ToString()
+        //{
+        //    return "Person-> " + base.ToString() + "\nstudentID: " + StudentID + ", program: " + Program + ", date registered: " + DateRegistered
+        //        + ",\nEnrollment-> " + StudentEnrollment;
+        //}
+
+        // A modified ToString() method for simply testing lists
         public override string ToString()
         {
-            return "Person-> " + base.ToString() + "\nstudentID: " + StudentID + ", program: " + Program + ", date registered: " + DateRegistered
-                + ",\nEnrollment-> " + StudentEnrollment;
+            return StudentID;
         }
 
         public bool Equals(Student other)
