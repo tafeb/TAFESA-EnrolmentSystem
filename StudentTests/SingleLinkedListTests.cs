@@ -57,7 +57,7 @@ namespace StudentTests
         public void RemoveFirst()
         {
             studentLists.RemoveFirst();
-
+            // student id should be "0063368", when the first student is remove first
             Assert.AreEqual("0063368", studentLists.Head.Value.StudentID);
         }
 
@@ -65,7 +65,7 @@ namespace StudentTests
         public void RemoveLast()
         {
             studentLists.RemoveLast();
-
+            // student id should be "0020124", when the last student is remove last
             Assert.AreEqual("0020124", studentLists.Tail.Value.StudentID);
         }
     }
