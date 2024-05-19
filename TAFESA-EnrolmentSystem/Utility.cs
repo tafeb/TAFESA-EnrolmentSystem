@@ -82,7 +82,7 @@ namespace TAFESA_EnrolmentSystem
         public static int BinarySearchArray<T>(T[] array, T target) where T : IComparable<T>
         {
             int min = 0;
-            int max = array.Length - 1;
+            int max = array.Length - 1; // Runtime error fix, should be array.Length - 1
             int mid;
             //target = target.ToUpper();
 
@@ -90,7 +90,7 @@ namespace TAFESA_EnrolmentSystem
             {
                 try
                 {
-                    mid = (min + max) / 2;
+                    mid = (min + max) / 2; //logical error fix, it should be (min + max)/2
                     // if the item is found,
                     if (array[mid].CompareTo(target) == 0)
                     {
