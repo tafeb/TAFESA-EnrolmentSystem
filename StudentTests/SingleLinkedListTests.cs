@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TAFESA_EnrolmentSystem;
 
-namespace StudentTests
+namespace StudentTest
 {
     [TestFixture]
     public  class SingleLinkedListTests
@@ -28,7 +28,7 @@ namespace StudentTests
         }
 
         [Test]
-        public void AddFirst()
+        public void AddFirstToHead()
         {
             studentLists.AddFirst(new Student("3333333", "Test", "00/00/2024", enrollment));
             // the student id at the Head of list should be "3333333"
@@ -37,7 +37,7 @@ namespace StudentTests
         }
 
         [Test]
-        public void AddLast()
+        public void AddLastToTail()
         {
             studentLists.AddLast(new Student("1111111", "Test", "00/00/2024", enrollment));
             // the student id at the Tail of the list should be "1111111"
@@ -46,7 +46,7 @@ namespace StudentTests
         }
 
         [Test]
-        public void FindStudent()
+        public void FindStudentInLinkedList()
         {
             var findTarget = studentLists.Contains(new Student("0063368", "Test - student03", "03/03/2024", enrollment));
             // the findTarget should exist in linkedlist
@@ -54,7 +54,7 @@ namespace StudentTests
         }
 
         [Test]
-        public void RemoveFirst()
+        public void RemoveFirstFromBeginning()
         {
             studentLists.RemoveFirst();
             // student id should be "0063368", when the first student is remove first
@@ -62,7 +62,7 @@ namespace StudentTests
         }
 
         [Test]
-        public void RemoveLast()
+        public void RemoveLastFromEnd()
         {
             studentLists.RemoveLast();
             // student id should be "0020124", when the last student is remove last

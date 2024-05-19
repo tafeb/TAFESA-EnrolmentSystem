@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TAFESA_EnrolmentSystem
 {
-    public class BinaryTree<T> where T : IComparable
+    public class BinaryTree<T> where T : IComparable<T>
     {
         public Node<T> Root { get; set; }
 
