@@ -42,40 +42,70 @@ namespace StudentTest
         [Test]
         public void LinearSearchFound()
         {
-            var result = Utility.LinearSeachArray(Utility.tenStudents, targetExist);
-            
-            // the target should be at index 6
-            Assert.AreEqual(6, result);
-
+            try
+            {
+                var result = Utility.LinearSeachArray(Utility.tenStudents, targetExist);
+                // the target should be at index 6
+                Assert.AreEqual(6, result);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail("Exception caught: {ex}");   
+            }          
         }
 
         [Test]
         public void LinearSearchNotFound()
         {
-            var result = Utility.LinearSeachArray(Utility.tenStudents, targetNotExist);
+            try
+            {
+                var result = Utility.LinearSeachArray(Utility.tenStudents, targetNotExist);
+
+                // the target is not in tenStudents array, should return -1
+                Assert.AreEqual(-1, result);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail("Exception caught: {ex}");
+            }
             
-            // the target is not in tenStudents array, should return -1
-            Assert.AreEqual(-1, result);
         }
 
         [Test]
         public void BinarySearchFound()
         {
             Array.Sort(testStudents);
-            var result = Utility.BinarySearchArray(testStudents, targetExist);
-            
-            // the target should be at index 7 after the array is sorted
-            Assert.AreEqual(7, result);
+
+            try
+            {
+                var result = Utility.BinarySearchArray(testStudents, targetExist);
+
+                // the target should be at index 7 after the array is sorted
+                Assert.AreEqual(7, result);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail("Exception caught: {ex}");
+            }     
         }
 
         [Test]
         public void BinarySearchNotFound()
         {
             Array.Sort(testStudents);
-            var result = Utility.BinarySearchArray(testStudents, targetNotExist);
+
+            try
+            {
+                var result = Utility.BinarySearchArray(testStudents, targetNotExist);
+
+                // the target is not in tenStudents array, should return -1
+                Assert.AreEqual(-1, result);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail("Exception caught: {ex}");
+            }
             
-            // the target is not in tenStudents array, should return -1
-            Assert.AreEqual(-1, result);
         }
 
         [Test]

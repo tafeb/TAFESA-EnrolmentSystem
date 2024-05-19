@@ -41,14 +41,21 @@ namespace TAFESA_EnrolmentSystem
             // while not found and not end of arraytarget
             while (!found && i < array.Length)
             {
-                if (target.CompareTo(array[i]) == 0)
+                try
                 {
-                    found = true;
+                    if (target.CompareTo(array[i]) == 0)
+                    {
+                        found = true;
+                    }
+                    else
+                    {
+                        // if no match, move to next element in array
+                        i++;
+                    }
                 }
-                else
+                catch (Exception ex) 
                 {
-                    // if no match, move to next element in array
-                    i++;
+                    Console.WriteLine("Exception caught: {ex}");
                 }
             }
             if (i < array.Length)
@@ -81,31 +88,39 @@ namespace TAFESA_EnrolmentSystem
 
             do
             {
-                mid = (min + max) / 2;
-                // if the item is found,
-                if (array[mid].CompareTo(target) == 0)
+                try
                 {
-                    // return the index mid
-                    return mid;
+                    mid = (min + max) / 2;
+                    // if the item is found,
+                    if (array[mid].CompareTo(target) == 0)
+                    {
+                        // return the index mid
+                        return mid;
+                    }
+                    // checks if the criteria is alphabetically after myArray[mid] 
+                    // then the criteria is in the top half of the search
+                    if (target.CompareTo(array[mid]) > 0)
+                    {
+                        // the item must be in the upper half,
+                        // set the min for the search to start at mid+1
+                        min = mid + 1;
+                    }
+                    else
+                    {
+                        // otherwise the item must be in the lower half,
+                        // set the max to the mid-1
+                        max = mid - 1;
+                    }
                 }
-                // checks if the criteria is alphabetically after myArray[mid] 
-                // then the criteria is in the top half of the search
-                if (target.CompareTo(array[mid]) > 0)
+                catch (Exception ex)
                 {
-                    // the item must be in the upper half,
-                    // set the min for the search to start at mid+1
-                    min = mid + 1;
-                }
-                else
-                {
-                    // otherwise the item must be in the lower half,
-                    // set the max to the mid-1
-                    max = mid - 1;
+                    Console.WriteLine("Exception caught: {ex}");
                 }
             }
             while (min <= max);
-            // -1 is returnded when not found
-            return -1;
+                // -1 is returnded when not found
+                return -1;
+            
         }
         
         //public static void SelectionSort<T>(T[] sortItem) where T : IComparable<T>

@@ -80,7 +80,7 @@ namespace TAFESA_EnrolmentSystem
             //Console.WriteLine("\n------- Testing Enrollment Class -------");
             //// create a new enrollment using no-arg constructor
             //Console.WriteLine("** using no-arg constructor **");
-            //Enrollment enrollment1 = new Enrollment();
+            Enrollment enrollment1 = new Enrollment();
             //Console.WriteLine(enrollment1);
             //// test Property Accessor Methods
             //enrollment1.DateEnrolled = "01/03/2023";
@@ -192,90 +192,90 @@ namespace TAFESA_EnrolmentSystem
 
 
             ///******** Testing Searching and Sorting ********/
-            //Console.WriteLine("\n\n****************************************************************");
-            //// Printout the array of 10 students
-            //Console.WriteLine("\nArray of 10 students using their studentID for searching and sorting tests:");
-            //foreach (Student aStudent in Utility.tenStudents)
-            //{
-            //    Console.Write(aStudent.StudentID + " ");
-            //}
+            Console.WriteLine("\n\n****************************************************************");
+            // Printout the array of 10 students
+            Console.WriteLine("\nArray of 10 students using their studentID for searching and sorting tests:");
+            foreach (Student aStudent in Utility.tenStudents)
+            {
+                Console.Write(aStudent.StudentID + " ");
+            }
 
-            //// Creating targets for searching
-            //Student target1 = new Student("0055555", "Test - student06", "06/06/2024", enrollment1);
-            //Student target2 = new Student("1111111", "Test - student06", "06/06/2024", enrollment1);
-            //Console.WriteLine("\n\nTargets for searching and sorting:");
-            //Console.WriteLine("target1 => studentID: " + target1.StudentID);
-            //Console.WriteLine("target2 => studentID: " + target2.StudentID);
-            //Student[] searchTargets = { target1, target2 };
+            // Creating targets for searching
+            Student target1 = new Student("0055555", "Test - student06", "06/06/2024", enrollment1);
+            Student target2 = new Student("1111111", "Test - student06", "06/06/2024", enrollment1);
+            Console.WriteLine("\n\nTargets for searching and sorting:");
+            Console.WriteLine("target1 => studentID: " + target1.StudentID);
+            Console.WriteLine("target2 => studentID: " + target2.StudentID);
+            Student[] searchTargets = { target1, target2 };
 
-            ///* Using linear search algorithm */
-            //Console.WriteLine("\n\tLinear seaarch of Student using studentIDs:");
-            //// Run search algorithm
-            //foreach (Student target in searchTargets)
-            //{
-            //    int index = Utility.LinearSeachArray(Utility.tenStudents, target);
-            //    if (index > 0)
-            //    {
-            //        Console.WriteLine("The student with StudentID of " + target.StudentID + " was found at index: " + index);
-            //    }
-            //    else
-            //    { 
-            //        Console.WriteLine("The student with StudentID of " + target.StudentID + " was not found! Returned index: " + index);
-            //    }
-            //}
+            /* Using linear search algorithm */
+            Console.WriteLine("\n\tLinear seaarch of Student using studentIDs:");
+            // Run search algorithm
+            foreach (Student target in searchTargets)
+            {
+                int index = Utility.LinearSeachArray(Utility.tenStudents, target);
+                if (index > 0)
+                {
+                    Console.WriteLine("The student with StudentID of " + target.StudentID + " was found at index: " + index);
+                }
+                else
+                {
+                    Console.WriteLine("The student with StudentID of " + target.StudentID + " was not found! Returned index: " + index);
+                }
+            }
 
-            //// Copy tenStudents array to another array before sorting
-            //Student[] copyTenStudents = (Student[])Utility.tenStudents.Clone();
-            //// First sort the tenStudents
-            //Array.Sort(copyTenStudents);
-            //// Printout the sorted array of 10 students
-            //Console.WriteLine("\nSorted tenStudents array using Array.Sort() before binary searching:");
-            //foreach (Student aStudent in copyTenStudents)
-            //{
-            //    Console.Write(aStudent.StudentID + " ");
-            //}
+            // Copy tenStudents array to another array before sorting
+            Student[] copyTenStudents = (Student[])Utility.tenStudents.Clone();
+            // First sort the tenStudents
+            Array.Sort(copyTenStudents);
+            // Printout the sorted array of 10 students
+            Console.WriteLine("\nSorted tenStudents array using Array.Sort() before binary searching:");
+            foreach (Student aStudent in copyTenStudents)
+            {
+                Console.Write(aStudent.StudentID + " ");
+            }
 
-            ///* Using binary search algorithm */
-            //Console.WriteLine("\n\n\tBinary seaarch of students using studentIDs:");
-            //// Run search algorithm
-            //foreach (Student target in searchTargets)
-            //{
-            //    int index = Utility.BinarySearchArray(copyTenStudents, target);
-            //    if (index > 0)
-            //    {
-            //        Console.WriteLine("The student with StudentID of " + target.StudentID + " was found at index: " + index);
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine("The student with StudentID of " + target.StudentID + " was not found! Returned index: " + index);
-            //    }
-            //}
+            /* Using binary search algorithm */
+            Console.WriteLine("\n\n\tBinary seaarch of students using studentIDs:");
+            // Run search algorithm
+            foreach (Student target in searchTargets)
+            {
+                int index = Utility.BinarySearchArray(copyTenStudents, target);
+                if (index > 0)
+                {
+                    Console.WriteLine("The student with StudentID of " + target.StudentID + " was found at index: " + index);
+                }
+                else
+                {
+                    Console.WriteLine("The student with StudentID of " + target.StudentID + " was not found! Returned index: " + index);
+                }
+            }
 
-            ///* Using InsertionSortAscending algorithm */
-            //// Copy tenStudents array to another array before sorting
-            //Student[] ascendingStudents = (Student[])Utility.tenStudents.Clone();
+            /* Using InsertionSortAscending algorithm */
+            // Copy tenStudents array to another array before sorting
+            Student[] ascendingStudents = (Student[])Utility.tenStudents.Clone();
 
-            //// Sort the tenStudents array in asscending order, using InsertionSortAscending() method
-            //Utility.InsertionSortAscending(ascendingStudents);
-            //Console.WriteLine("\nSorted tenStudents array in ascending order, using InsertionSortAscending()");
-            //foreach (Student aStudent in ascendingStudents)
-            //{
-            //    Console.Write(aStudent.StudentID + " ");
-            //}
-            //Console.WriteLine();
+            // Sort the tenStudents array in asscending order, using InsertionSortAscending() method
+            Utility.InsertionSortAscending(ascendingStudents);
+            Console.WriteLine("\nSorted tenStudents array in ascending order, using InsertionSortAscending()");
+            foreach (Student aStudent in ascendingStudents)
+            {
+                Console.Write(aStudent.StudentID + " ");
+            }
+            Console.WriteLine();
 
-            ///* Using InsertionSortDescending algorithm */
-            //// Copy tenStudents array to another array before sorting
-            //Student[] descendingStudents = (Student[])Utility.tenStudents.Clone();
+            /* Using InsertionSortDescending algorithm */
+            // Copy tenStudents array to another array before sorting
+            Student[] descendingStudents = (Student[])Utility.tenStudents.Clone();
 
-            //// Sort the tenStudents array in descending order, using InsertionSortDescending() method
-            //Utility.InsertionSortDescending(descendingStudents);
-            //Console.WriteLine("\nSorted tenStudents array in descending order, using InsertionSortDescending()");
-            //foreach (Student aStudent in descendingStudents)
-            //{
-            //    Console.Write(aStudent.StudentID + " ");
-            //}
-            //Console.WriteLine("\n\n****************************************************************");
+            // Sort the tenStudents array in descending order, using InsertionSortDescending() method
+            Utility.InsertionSortDescending(descendingStudents);
+            Console.WriteLine("\nSorted tenStudents array in descending order, using InsertionSortDescending()");
+            foreach (Student aStudent in descendingStudents)
+            {
+                Console.Write(aStudent.StudentID + " ");
+            }
+            Console.WriteLine("\n\n****************************************************************");
 
 
             //Console.ReadKey();
